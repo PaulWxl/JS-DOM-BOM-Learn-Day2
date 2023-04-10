@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+
+        /* 注意，给盒子和table都设置了宽度，不同时设置的h话会有点不同 */
+        .wrap {
+            width: 400px;
+            margin: 100px auto;
+        }
+
+        .wrap table {
+            border-collapse: collapse;
+            width: 400px;
+        }
+
+        .wrap table td {
+            /* font连写属性--粗细/大小/字体 */
+            font: normal 16px "Arial";
+            text-align: center;
+        }
+
+        .wrap table th,td {
+            border: 1px solid rgb(208, 208, 208);
+            padding: 15px ;
+        }
+
+        .wrap table th {
+            color: #fff;
+            background-color: rgb(0, 153, 204);
+        }
+        
+        
+
+        .wrap table tbody tr:hover {
+            background-color: rgb(250, 250, 250);
+        }
+
+        .sp {
+            font-weight: bold !important;
+        }
+        
+        .wrap table input {
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" id="select-all">
+                    </th>
+                    <th>商品</th>
+                    <th>价钱</th>
+                </tr>
+            </thead>
+    
+    
+    
+            <tbody id="select-one">
+                <tr>
+                    <td>
+                        <input type="checkbox" >
+                    </td>
+                    <td class="sp">iPhone8</td>
+                    <td>8000CNY</td>
+                </tr>
+    
+                <tr>
+                    <td>
+                        <input type="checkbox" >
+                    </td>
+                    <td class="sp">iPad Pro</td>
+                    <td>5000CNY</td>
+                </tr>
+    
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td class="sp">iPad Air</td>
+                    <td>2000CNY</td>
+                </tr>
+    
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td class="sp">Apple Watch</td>
+                    <td>2000CNY</td>
+                </tr>
+    
+            </tbody>
+        </table>
+    </div>
+
+
+    <script>
+        const select_all = document.getElementById('select-all')
+        const select_one = document.getElementById('select-one').getElementsByTagName('input')
+
+
+        // 上面全选按钮选中，底下的都选上
+        select_all.onclick = function() {
+            for (let i = 0; i < select_one.length; i++) {
+                select_one[i].checked = this.checked
+            }
+        }
+
+
+        
+        //下面的只有全部选择了，全选才选择
+        // for (let i = 0; i < select_one.length; i++) {
+        //     select_one[i].onclick = function() {
+        //         let flag = true//这一步很关键，引入了一个判断变量flag，初始化为true
+
+        //         //循环检查下面所有的复选框，如果有没选中的，就不选全选
+        //         for (let i = 0; i < select_one.length; i++) {
+        //             if (!select_one[i].checked) {
+        //                 flag = false
+        //                 break//把flag置为false 退出循环 提高效率
+        //             }
+        //         }
+        //         select_all.checked = flag//全选置为false
+        //     }
+        // }
+
+
+
+        for (let i = 0; i < select_one.length; i++) {
+            select_one[i].addEventListener('click', function() {
+                let flag = true
+
+
+                //运用双层循环嵌套，每个复选框选中后都循环查看所有的复选框的状态，如果有没选择的，就把判断变量flag置为false，在循环外部再把flag的状态赋给全选框的checked
+                for (let i = 0; i < select_one.length; i++) {
+                    if (!select_one[i].checked) {
+                        flag = false
+                        break
+                    }
+                }
+
+                select_all.checked = flag
+            })
+        }
+    </script>
+</body>
+</html>

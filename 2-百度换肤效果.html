@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #images {
+            margin: 100px auto;
+            width: 411px;
+            background-color: pink;
+            padding: 6px 3px 1px 6px;
+            overflow: hidden;
+        }
+        #images li img {
+            
+            width: 100px;
+        }
+        #images li {
+            list-style: none;
+            float: left;
+            margin: 0 1px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <ul id="images">
+        <li><img src="./images/1.jpg" alt=""></li>
+        <li><img src="./images/2.jpg" alt=""></li>
+        <li><img src="./images/3.jpg" alt=""></li>
+        <li><img src="./images/4.jpg" alt=""></li>
+    </ul>
+
+    <script>
+        const imgs = document.querySelectorAll('img')
+        
+        for (let i = 1; i <= imgs.length; i++) {
+            imgs[i-1].onclick = function() {
+                // 注意，用到了三个属性backgroundImage/backgroundRepeat/backgroundSize 而且值都是字符串形式的
+                document.body.style.backgroundImage = 'url(./images/'+i+'.jpg)'
+                document.body.style.backgroundRepeat = 'no-repeat'
+                document.body.style.backgroundSize = '1700px'
+         }
+        }
+    </script>
+</body>
+</html>

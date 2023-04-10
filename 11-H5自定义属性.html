@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- H5自定义属性
+
+    目的：为了保存并使用数据。有些数据可以保存到页面中而不用保存到数据库中。但是有些自定义属性很容易引起歧义，不容易判断是元素的内置属性还是自定义属性。H5给我们新增了自定义属性：
+
+    1. 设置H5自定义属性
+    H5规定自定义属性data-开头作为属性名并且赋值。
+    比如 <div data-index=“1”></div>
+    或者使用 JS 设置  
+    element.setAttribute(‘data-index’, 2) -->
+
+
+    <div data-index="1" data-time="20" data-list-name="andy"></div>
+
+    <script>
+        let div = document.querySelector('div')
+        console.log(div.getAttribute('data-index'));//控制台可以输出1
+        console.log(div.getAttribute('data-time'));//控制台可以输出20
+        console.log(div.getAttribute('data-list-name'));//控制台可以输出andy
+
+        div.setAttribute('data-name', '哈哈哈哈哈')
+        console.log(div.getAttribute('data-name'));//控制台可以输出哈哈哈哈哈
+
+
+        //H5新增属性---dataset是一个集合(对象) 存放了所有以data开头的自定义属性
+        console.log(div.dataset);//输出的是一个对象 里面包含的都是自定义属性
+        console.log(typeof div.dataset);//输出的是object
+
+
+        //可以用dataset.属性名 输出自定义属性
+        console.log(div.dataset.index);//输出1
+        console.log(div.dataset.time);//输出20
+        console.log(div.dataset.listName);//输出andy---注意如果自定义属性名含有连字符时，需要用驼峰命名法
+        console.log(div.dataset.name);//输出哈哈哈哈哈
+
+        //还可以用 dataset['属性名']
+        console.log(div.dataset['index']);//输出1
+        console.log(div.dataset['time']);//输出20
+        console.log(div.dataset['listName']);//输出andy---注意如果自定义属性名含有连字符时，需要用驼峰命名法
+
+
+
+
+        
+
+        div.setAttribute('data-date', '2023-03-23')
+        console.log(div.dataset.date);//输出2023-03-23
+        console.log(div.getAttribute('data-date'));//输出2023-03-23
+
+
+
+
+
+        
+
+
+
+
+    </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 3. parentNode.firstChild 
+    firstChild 返回第一个子节点，找不到则返回null。同样，也是包含所有的节点。
+    4. parentNode.lastChild
+    lastChild 返回最后一个子节点，找不到则返回null。同样，也是包含所有的节点。
+    
+
+    5,6 记住就行了。
+    5. parentNode.firstElementChild  
+    firstElementChild  返回第一个子元素节点，找不到则返回null。
+    
+    6. parentNode.lastElementChild
+    lastElementChild 返回最后一个子元素节点，找不到则返回null。
+    5,6有兼容性问题，IE9以上才支持。所以实际工作中，用的是children[索引]来才查找子元素更多。-->
+
+
+    <ol>
+        <li>li1</li>
+        <li>li2</li>
+        <li>li3</li>
+        <li>li4</li>
+        <li>li5</li>
+    </ol>
+
+    <!-- 获取第一个li和最后一个li  -->
+    <script>
+        const ol = document.querySelector('ol')
+        const olfirstchild = ol.firstElementChild
+        // console.log(olfirstchild)
+        // console.dir(olfirstchild)
+
+
+        // const ollastchild = ol.lastElementChild
+        // console.log(ollastchild)
+        // console.dir(ollastchild)
+
+
+        //也可以用parentNode.children[索引]
+        console.log(ol.children[0])//直接输出节点<li>::maker li1</li>
+        console.log(ol.children[1])
+        console.log(ol.children[2])
+        console.log(ol.children[3])
+
+        const length = ol.children.length
+        console.log(ol.children[length - 1])//长度 - 1就是最后一个子节点的索引号
+    </script>
+</body>
+</html>

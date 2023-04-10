@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            align-items: end;
+            width: 300px;
+            height: 200px;
+            margin: 100px auto;
+
+        }
+
+        textarea {
+            width: 100%;
+            height: 100%;
+            resize: none;
+            outline: 0;
+        }
+
+        ul {
+            margin-top: 50px;
+        }
+
+        li {
+            list-style: none;
+            background-color: #e9e3e3;
+            width: 300px;
+            padding: 5px;
+            border: 1px solid #efebeb;
+            border-radius: 10px;
+            margin: 15px auto;
+            font-family: '宋体';
+            font-size: small;
+            color: #4e6efa;
+        }
+
+        .nav>button {
+            width: 40px ;
+            margin-left: 10px;
+        }
+
+       
+
+        
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <button >发布</button>
+    </div>
+    
+    <ul></ul>
+
+
+
+
+    <script>
+        const text = document.querySelector('textarea')
+        const btn = document.querySelector('button')
+        const ul = document.querySelector('ul')
+
+        btn.addEventListener('click', function() {
+            //和input type=text 一样，获取内容用的是value而不是innerHTML
+            const value = text.value
+            if (value == '') {
+                alert('您没有输入任何内容！')
+                return false//直接return false 
+            } else {
+                // console.log(value)
+
+                const li = document.createElement('li')
+                li.innerHTML = value
+                
+                // ul.appendChild(li)
+                ul.insertBefore(li, ul.children[0])
+
+            }
+        })
+
+
+    </script>
+</body>
+</html>

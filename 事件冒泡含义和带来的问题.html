@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件冒泡含义和带来的问题</title>
+    <style>
+        #parent {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            background-color: aqua;
+        }
+        #child {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            
+            width: 200px;
+            height: 200px;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <div id="parent">
+        <div id="child">子元素</div>
+      </div>
+
+      <script>
+            var parent = document.getElementById('parent');
+            var child = document.getElementById('child');
+
+            parent.addEventListener('click', function() {
+            console.log('父元素被点击');
+            });
+
+            child.addEventListener('click', function() {
+            console.log('子元素被点击');
+            });
+
+            //控制台会输出两个---先输出子元素被点击，然后输出父元素被点击
+            //也就是说，子元素的事件会传递到父元素身上，如果父元素也绑定了同类的事件处理函数，那么父元素的事件处理函数也会被触发
+
+
+
+
+      </script>
+</body>
+</html>

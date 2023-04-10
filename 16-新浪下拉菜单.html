@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_3976206_f9gp78mngq5.css?spm=a313x.7781069.1998910419.52&file=font_3976206_f9gp78mngq5.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 15px;
+        }
+
+        .nav {
+            margin: 100px;
+        }
+
+        .nav>li {
+            position: relative;
+            float: left;
+            width: 80px;
+            height: 37px;
+            border: 1px solid #d6cece;
+        }
+
+        .nav li a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            line-height: 41px;
+            text-align: center;
+        }
+
+        .nav>li>a:hover {
+            background-color: #eee;
+        }
+
+        .nav>li>ul>li {
+            border-left: 1px solid #FECC5B;
+            border-right: 1px solid #FECC5B;
+            border-bottom: 1px solid #FECC5B;
+        }
+
+        .nav>li>ul>li>a {
+            font-size: 0.7em;
+        }
+        .nav>li>ul {
+            display: none;
+            position: absolute;
+            float: left;
+            width: 100%;
+            height: 100%;
+            left: -1px;
+            right: -1px;
+        }
+
+        .nav>li>ul>li:hover {
+            background-color: #FFF5DA;
+        }
+
+        .nav>li>a>i {
+            padding-left: 6px;
+            color: #e6a714;
+            font-size: small;
+        }
+
+        
+    </style>
+</head>
+<body>
+        <ul class="nav">
+            <li>
+                <a href="">微博 <i class="iconfont icon-xiala"></i></a>
+                <ul>
+                    <li>
+                        <a href="">私信</a>
+                    </li>
+                    <li>
+                        <a href="">评论</a>
+                    </li>
+                    <li>
+                        <a href="">@我</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="">博客<i class="iconfont icon-xiala"></i></a>
+                <ul>
+                    <li>
+                        <a href="">私信</a>
+                    </li>
+                    <li>
+                        <a href="">评论</a>
+                    </li>
+                    <li>
+                        <a href="">@我</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="">邮箱<i class="iconfont icon-xiala"></i></a>
+                <ul>
+                    <li>
+                        <a href="">私信</a>
+                    </li>
+                    <li>
+                        <a href="">评论</a>
+                    </li>
+                    <li>
+                        <a href="">@我</a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+
+
+        <script>
+            const nav = document.querySelector('.nav')
+
+            const lis = nav.children
+
+            for (let i = 0; i < lis.length; i++) {
+                lis[i].addEventListener('mouseover', function() {
+                    lis[i].children[1].style.display = 'block'
+                })
+
+                lis[i].addEventListener('mouseout', function() {
+                    lis[i].children[1].style.display = 'none'
+                })
+            }
+
+        </script>
+</body>
+</html>

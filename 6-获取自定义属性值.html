@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 自定义属性---html中元素没有预定义的属性 -->
+    <div class="nav" id="demo" index="1"></div>
+
+    <script>
+        let div = document.getElementById('demo')
+
+        // 一：获取元素的属性值
+
+        // 法一：element.属性---注意输出类名时 不是element.class 而是element.className
+        console.log(div.id);//控制台可以输出demo
+        console.log(div.index);//控制台输出undefined---说明法一识别不了自定义属性
+        console.log(div.className);//控制台可以输出nav
+
+
+        // 法二：运用getAttribute方法
+        // element.getAttribute('属性') , 注意参数为字符串格式
+        console.log(div.getAttribute('id'));//控制台可以输出demo
+        console.log(div.getAttribute('class'));//控制台可以输出nav
+        console.log(div.getAttribute('index'));//控制台可以输出1---说明法二可以识别自定义属性
+
+
+
+
+        // 二：设置元素属性值
+        
+        // 法一： element.属性 = '值'---注意设置类名时 不是 element.class 而是 element.className = '值'
+        div.id = 'test'
+        div.className = 'navchange'
+        
+        console.log(div.id);//控制台可以输出test
+        console.log(div.className);//控制台可以输出navchange
+
+
+        // 法二： 运用setAttribute方法
+        // element.setAttribute('属性', '值')，主要用于设置自定义属性的值
+        div.setAttribute('index', 2)
+        div.setAttribute('class', 'footer')//class特殊，用setAttribute修改元素的类名时，里面写的就是class,而不是className
+        console.log(div.getAttribute('index'));//控制台可以输出2
+        console.log(div.className);//控制台可以输出footer
+
+
+        // 三：移除元素属性
+        // 只有一个方法：运用removeAttribute方法
+        //removeAttribute('属性')
+        div.removeAttribute('index')
+        console.log(div.getAttribute('index'));//控制台可以输出null---也就是说，对于一个元素没有的属性，获取时并不会报错，而是为null
+        
+
+
+
+
+    </script>
+</body>
+</html>

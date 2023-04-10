@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            margin: 100px 500px;
+        }
+
+        .box .list-info li {
+            float: left;
+            list-style: none;
+            border-collapse: collapse;
+            border: 1px solid #bdbcbc;
+            padding: 7px 16px;
+            color: #333;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: rgb(241, 241, 241);
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .box .list-info {
+           
+            height: 37px;
+        }
+        .current {
+            background-color: rgb(200, 22, 35)!important;
+            color: #fff!important;
+            outline: 0;
+            border: 0;
+        }
+        .item {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 案例：tab 栏切换（重点案例）
+
+    当鼠标点击上面相应的选项卡（tab），下面内容跟随变化 -->
+
+
+    <div class="box">
+        <!-- 上方 -->
+        <div class="list-info">
+            <ul>
+                <li class="current">商品介绍</li>
+                <li>规格与包装</li>
+                <li>售后保障</li>
+                <li>商品评价（50000）</li>
+                <li>手机社区</li>
+            </ul>
+        </div>
+
+
+        <!-- 下方 -->
+        <div class="extra-info">
+            <!-- display:block不仅可以转换为块元素，还可以产生显示的功能 ,默认给所有item设置了display:none, 所有这里用了行内样式---设置第一个item显示-->
+            <div class="item" style="display: block;">商品介绍模块内容</div>
+            <div class="item">规格与包装模块内容</div>
+            <div class="item">售后保障模块内容</div>
+            <div class="item">商品评价（50000）模块内容</div>
+            <div class="item">手机社区模块内容</div>
+        </div>
+    </div>
+
+
+
+    <script>
+        const lis = document.querySelector('.list-info').querySelectorAll('li')
+        const items = document.querySelector('.extra-info').querySelectorAll('.item')
+
+
+        for (let i = 0; i < lis.length; i++) {
+            // 一开始就给5个小li设置自定义属性-index索引号,目的是让下方的item对应显示，所以要拿到小li的index---采取自定义属性---第0个小li的index设置为0，第1个小li的index设置为1......
+
+            lis[i].setAttribute('index', i)//第0个的index是0---从0开始
+
+            lis[i].addEventListener('click', function() {
+                // 一：上面的模块
+                // 先清空所有人的
+                for (let i = 0; i < lis.length; i++) {
+                    lis[i].className = ''
+                }
+
+                // 再添加自己的
+                lis[i].className = 'current'
+
+
+
+                // 二：下面的模块
+                // 先获取对应小li的index---注意，自定义属性的获取不能用element.属性，必须使用getAttribute
+                let index = lis[i].getAttribute('index')
+
+                //再让对应的item显示---得先去除所有人的，再设置对应的---所以是items[index]
+                for (let i = 0; i < items.length; i++) {
+                    items[i].style.display = 'none'
+                }
+
+                items[index].style.display = 'block'
+                
+            })
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 利用 DOM 树可以把节点划分为不同的层级关系，常见的是父子兄层级关系。
+
+    1. 父级节点 
+     node.parentNode
+
+    parentNode 属性可返回某节点的父节点，注意是最近的一个父节点
+    如果指定的节点没有父节点则返回 null 
+
+     -->
+
+     <div>我是div</div>
+     <span>我是span</span>
+
+     <ul>
+        <li>我是li1</li>
+        <li>我是li2</li>
+        <li>我是li3</li>
+        <li>我是li4</li>
+     </ul>
+
+     <div class="demo">
+        <div class="box">
+            <div class="erweima">x</div>
+         </div>
+     </div>
+     
+
+     <script>
+        //先获取erweima
+        const erweima = document.querySelector('.erweima')
+        //获取最近的父节点
+        console.log(erweima.parentNode);//控制台直接输出元素节点
+
+        console.dir(erweima.parentNode)//输出一个对象，（div.box） nodeName: "DIV"  ， nodeType: 1，  nodeValue: null 
+
+
+        const demo = document.querySelector('.demo')
+        console.log(demo.parentNode);//body元素
+        console.dir(demo.parentNode)//输出一个对象，里面包含了各种属性和值，最主要的就是nodeType，nodeValue，nodeName
+
+     </script>
+</body>
+</html>
